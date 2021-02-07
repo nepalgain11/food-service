@@ -10,8 +10,36 @@
     grid-gap:30px;
 }
 .image-size{
-    width: 298px;
+    width: 298px !important;
     height: 185px;
 }
+.item-class :hover{
+    cursor: pointer;
+}
+.input-area{
+    width: 470px;
+    margin: 100px auto 70px;;
+}
+#input-area{
+    width: 364px;
+    height: 40px;
+    padding: 6px;
+    border: 1px solid green;
+}
+
+#button{
+    height: 40px;
+    margin-left: -5px;
+    border: 1px solid green;
+    padding: 6px;
+    border-radius: 0 3px 3px 0;
+    position: relative;
+    top: -1px;
+    background:orange;
+    color:white;
+    width:80px;
+}
+
+
 
 
