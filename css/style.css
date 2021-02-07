@@ -1,0 +1,17 @@
+.item-class{
+    border:1px solid green;
+    border-radius:5px;
+    width:300px;
+    text-align:center;
+}
+.items{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:30px;
+}
+.image-size{
+    width: 298px;
+    height: 185px;
+}
+
+
