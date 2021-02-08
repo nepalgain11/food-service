@@ -47,4 +47,17 @@ body{
     color:red;
 }
 
-
+.header-title{
+    width:290px;
+    float:right;
+    color:green;
+    font-size: 30px;
+    margin-top:10px;
+}
+.menu{
+    width:500px;
+    float:left;
+}
+.nav-area{
+    overflow: hidden;
+}

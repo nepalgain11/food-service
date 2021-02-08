@@ -8,10 +8,9 @@ document.getElementById("button").addEventListener("click",function(){
     }
     else{
         const inputValue = document.getElementById("input-area").value;
-        fetch(`https://www.themealdba.com/api/json/v1/1/search.php?s=${inputValue}`)
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputValue}`)
         .then(res => res.json())
         .then (data =>displayFood(data.meals)) // object to array convert
-        .catch (error => displayError ("Something Went Wrong Please, Try Again!!!"))
     }
 });
 
@@ -23,13 +22,13 @@ const displayFood = meals =>{
     meals.map (item => {
         const itemDiv = document.createElement("div");
         itemDiv.className = "item-class"; 
-        //thumbnail
+                                     //thumbnail + popup 
         const foodInfo = `
             <img onclick = "popUp('${item.strMeal}','${item.strCategory}','${item.strArea}','${item.strIngredient1}','${item.strIngredient3}','${item.strIngredient4}','${item.strIngredient5}')" id="more_details" class="image-size" data-bs-toggle="modal" data-bs-target="#exampleModal" src = "${item.strMealThumb}"> 
             <h5>${item.strMeal}</h5>
         `
         itemDiv.innerHTML = foodInfo;
-       items.appendChild(itemDiv);
+        items.appendChild(itemDiv);
     });
 
 }
@@ -39,7 +38,7 @@ const displayFood = meals =>{
     const modelDiv = document.querySelector(".modal-body");
     const createDiv = document.createElement("div");
     modelDiv.innerHTML = " ";
-                    //food details 
+                                                        //food details 
     const popUpDetails = `
         <h4>Name : ${foodName}</h4>
         <h5>Category : ${category}</h5>
@@ -53,11 +52,4 @@ const displayFood = meals =>{
     modelDiv.appendChild(createDiv);
     
  }
-
-const displayError = error =>{
-    const errorMsg = document.getElementById("error");
-    errorMsg.innerText = error;
-}
-
-
 
