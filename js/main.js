@@ -29,7 +29,7 @@ document.getElementById("button").addEventListener("click",function(){
 });
 
 
-//show all meals after search
+//Show all food after search
 const displayFood = meals =>{
     const items = document.querySelector(".items");
     
