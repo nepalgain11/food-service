@@ -37,7 +37,7 @@ const displayFood = meals =>{
     meals.map (item => {
         const itemDiv = document.createElement("div");
         itemDiv.className = "item-class"; 
-                                     //thumbnail + popup 
+                                     //thumbnail + popup details
         const foodInfo = `
             <img onclick = "popUp('${item.strMealThumb}','${item.strMeal}','${item.strCategory}','${item.strArea}','${item.strIngredient1}','${item.strIngredient3}','${item.strIngredient4}','${item.strIngredient5}')" id="more_details" class="image-size" data-bs-toggle="modal" data-bs-target="#exampleModal" src = "${item.strMealThumb}"> 
             <h5>${item.strMeal}</h5>
