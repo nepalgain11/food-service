@@ -53,7 +53,7 @@ const displayFood = meals =>{
     const modelDiv = document.querySelector(".modal-body");
     const createDiv = document.createElement("div");
     modelDiv.innerHTML = " ";
-                                                        // pop up food details 
+                                                   // pop up food details 
     const popUpDetails = `
         <img class ="popup-img" src = "${popupImg}">
         <h4>Name : ${foodName}</h4>
