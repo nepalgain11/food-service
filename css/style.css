@@ -61,3 +61,11 @@ body{
 .nav-area{
     overflow: hidden;
 }
+#empty-msg{
+    text-align: center;
+    font-size: 25px;;
+}
+.popup-img{
+    width:100%;
+    height:350px; 
+}

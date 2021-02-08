@@ -10,21 +10,36 @@ document.getElementById("button").addEventListener("click",function(){
         const inputValue = document.getElementById("input-area").value;
         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputValue}`)
         .then(res => res.json())
-        .then (data =>displayFood(data.meals)) // object to array convert
+        .then (data =>{
+            if( data.meals == null){
+                const emptyMessage = document.getElementById("empty-msg"); // 
+                emptyMessage.style.display = "block";
+                emptyMessage.innerHTML = "No food available";
+                const items = document.querySelector(".items");
+                items.innerHTML = " ";
+            }
+            else{
+                displayFood(data.meals); // pass food details
+                const emptyMessage = document.getElementById("empty-msg"); 
+                emptyMessage.style.display = "none";
+            }
+           
+        }) // object to array convert
     }
 });
 
 
-
+//show all meals after search
 const displayFood = meals =>{
     const items = document.querySelector(".items");
+    
     items.innerHTML = " ";
     meals.map (item => {
         const itemDiv = document.createElement("div");
         itemDiv.className = "item-class"; 
                                      //thumbnail + popup 
         const foodInfo = `
-            <img onclick = "popUp('${item.strMeal}','${item.strCategory}','${item.strArea}','${item.strIngredient1}','${item.strIngredient3}','${item.strIngredient4}','${item.strIngredient5}')" id="more_details" class="image-size" data-bs-toggle="modal" data-bs-target="#exampleModal" src = "${item.strMealThumb}"> 
+            <img onclick = "popUp('${item.strMealThumb}','${item.strMeal}','${item.strCategory}','${item.strArea}','${item.strIngredient1}','${item.strIngredient3}','${item.strIngredient4}','${item.strIngredient5}')" id="more_details" class="image-size" data-bs-toggle="modal" data-bs-target="#exampleModal" src = "${item.strMealThumb}"> 
             <h5>${item.strMeal}</h5>
         `
         itemDiv.innerHTML = foodInfo;
@@ -32,14 +47,15 @@ const displayFood = meals =>{
     });
 
 }
-
- const popUp = (foodName, category, foodArea, details1, details2, details3 , details4) => {
+              //show all details  after food item click
+ const popUp = (popupImg, foodName, category, foodArea, details1, details2, details3 , details4) => {
 
     const modelDiv = document.querySelector(".modal-body");
     const createDiv = document.createElement("div");
     modelDiv.innerHTML = " ";
-                                                        //food details 
+                                                        // pop up food details 
     const popUpDetails = `
+        <img class ="popup-img" src = "${popupImg}">
         <h4>Name : ${foodName}</h4>
         <h5>Category : ${category}</h5>
         <h5>Area : ${foodArea}</h5>
